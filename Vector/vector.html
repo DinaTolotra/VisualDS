@@ -7,16 +7,29 @@
 
     <!-- Online purpose -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.13.3/themes/smoothness/jquery-ui.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.13.3/jquery-ui.min.js"></script>
 
     <!-- Offline purpose -->
     <!-- <script src="../Res/JQuery.js"></script> -->
+    <!-- <script src="../Res/jquery-ui/jquery-ui.js"></script> -->
+    <!-- <link rel="stylesheet" href="../Res/jquery-ui/jquery-ui.css"> -->
 
     <link rel="stylesheet" href="style.css">
-    <script src="sript.js"></script>
+    <link rel="stylesheet" href="popupStyle.css">
+
+    <script src="script.js"></script>
+    <script src="popupEngine.js" defer></script>
 </head>
 
 <body>
+    <div class="popup" id="inputPopup">
+        <div class="inputGroup">
+            <label for="input">Input: </label>
+            <input type="text" id="input">
+        </div>
+    </div>
+
     <table>
         <tr id="index">
             <td>Index: </td>

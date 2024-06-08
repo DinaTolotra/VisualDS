@@ -1,4 +1,11 @@
 let value = [];
+let selectedIndex = -1;
+
+
+function getValueCellByIndex(index) {
+    return $(`#value > .cell[index=${index}]`);
+}
+
 
 function indexOf(cell) {
     return cell.attr("index");
@@ -18,7 +25,7 @@ function getIteratorState(cell) {
 
 function getPointedCell(pointer) {
     let index = indexOf(pointer);
-    return $(`#value > .cell[index=${index}]`);
+    return getValueCellByIndex(index);
 }
 
 
@@ -51,19 +58,11 @@ function setIteratorEvent(cell) {
 }
 
 
-function setValueChangeEvent(cell) {
+function setOpenDialogEvent(cell) {
     cell.on("click", ()=>{
-        let input = getValue();
         let index = cell.attr("index");
-        cell.html(input);
-        value[index] = input;
-    });
-}
-
-
-function setColorChangeEvent(cell) {
-    $(cell).on("dblclick", function () {
-        console.log("changing color");
+        selectedIndex = index;
+        getInputFromPopup();
     });
 }
 
@@ -85,8 +84,7 @@ function addValueCell() {
     cell.addClass("cell");
     cell.text(0);
 
-    setColorChangeEvent(cell);
-    setValueChangeEvent(cell);
+    setOpenDialogEvent(cell);
     cell.attr("index", value.length-1);
 
     cell.insertBefore("#value > .last");
@@ -125,9 +123,9 @@ function setAddEvent() {
     });
 }
 
+
 //  main function
 $(document).ready(function () {
-    "Strict mode";
-
+    createDialog();
     setAddEvent();
 });
